@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -51,6 +52,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 =======
 # react__try
 >>>>>>> c7c031b (Initial commit)
+=======
+# react__try
+>>>>>>> c7c031b6ad9bcb7ac83f26da800c5dad065c0aaf
 =======
 # react__try
 >>>>>>> c7c031b6ad9bcb7ac83f26da800c5dad065c0aaf
