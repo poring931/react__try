@@ -14,7 +14,8 @@ const MyPosts = () => {
         </div>
       </div>
       <div className={s.posts}>
-       <Post/>
+       <Post message ='Hi, how are u'/>
+       <Post message = 'its my first app'/>
       </div>
     </div>
     )
