@@ -5,6 +5,7 @@
 .item{
   color:red;
   display: flex;
+  margin-top:20px;
 
 }
 .item img{
