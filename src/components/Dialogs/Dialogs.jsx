@@ -40,6 +40,7 @@ const Dialogs = (props) =>{
         {id: 7, message: 'Anrasdasdasdasdasdasddeya'},
     ];
 
+
     return (
        <div>
             <div className={Style.dialogs}>
