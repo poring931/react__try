@@ -24,8 +24,8 @@ let dialogsData = [
   ];
   
   let postsData =[
-    {id: 111, message: 'Dima', likesCount: 12},
-    {id: 222, message: 'its my first app', likesCount: 15},
+    {id: 111, message: 'Dima', likeCount: 12},
+    {id: 222, message: 'its my first app', likeCount: 15},
     {id: 333, message: 'Ola'},
     {id: 444, message: 'Anrdeya'},
     {id: 555, message: 'Junior'},
