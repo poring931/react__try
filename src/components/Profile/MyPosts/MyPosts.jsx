@@ -2,10 +2,22 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
+
+
 const MyPosts = (props) => {
- console.log(props)
+//  console.log(props)
   // debugger;
   let postsElements = props.postsData.map(p => <Post key={p.id} message = {p.message} likeCount = {p.likeCount}/> );
+
+  let newPostElement = React.createRef();
+ 
+  let addPost = () =>{
+ 
+    let text = newPostElement.current.value;
+    props.addPost(text)
+  
+  }
+
 
     return (
       <div className={s.postsBlock}>
@@ -13,10 +25,10 @@ const MyPosts = (props) => {
         <div>
           <div>
             <div>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <textarea ref={newPostElement} name="" id="" cols="30" rows="10"></textarea>
             </div>
             <div>
-              <button>Add post</button>
+              <button onClick={addPost}>Add post</button>
               <button>Remove</button>
             </div>
           </div>
