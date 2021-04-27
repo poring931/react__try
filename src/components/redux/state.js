@@ -1,7 +1,11 @@
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-const SEND_MESSAGE = 'SEND_MESSAGE';
+import dialogsReducer from "./dialogs_reducer";
+import profileReducer from "./profile_reducer";
+import sidebarReducer from "./sidebar_reducer";
+
+// const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+// const ADD_POST = 'ADD-POST';
+// const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+// const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let store = {
     _state: {
@@ -100,7 +104,8 @@ let store = {
                 },
             ],
             newMessageBody: ''
-        }
+        },
+        sidebar:{}
     },
     _callSubscriber() {
         console.log('state chanchged')
@@ -130,43 +135,50 @@ let store = {
 
 
     dispatch(action){//диспатчем заменяем все экщены
-        if (action.type === ADD_POST){
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0,
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText ='';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT){
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY){
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber(this._state)
-        } else if (action.type === SEND_MESSAGE){
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody = '';
-            this._state.dialogsPage.messagesData.push({ id: 113, message: body });
-            this._callSubscriber(this._state)
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage,action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
+        this._state.sidebar = sidebarReducer(this._state.profilePage,action);
+
+        this._callSubscriber(this._state)
+
+        // if (action.type === ADD_POST){ //перешли на Reducer's
+        //     let newPost = {
+        //         id: 5,
+        //         message: this._state.profilePage.newPostText,
+        //         likeCount: 0,
+        //     }
+        //     this._state.profilePage.postsData.push(newPost)
+        //     this._state.profilePage.newPostText ='';
+        //     this._callSubscriber(this._state);
+        // } else if (action.type === UPDATE_NEW_POST_TEXT){
+        //     this._state.profilePage.newPostText = action.newText;
+        //     this._callSubscriber(this._state);
+        // } else if (action.type === UPDATE_NEW_MESSAGE_BODY){
+        //     this._state.dialogsPage.newMessageBody = action.body;
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === SEND_MESSAGE){
+        //     let body = this._state.dialogsPage.newMessageBody;
+        //     this._state.dialogsPage.newMessageBody = '';
+        //     this._state.dialogsPage.messagesData.push({ id: 113, message: body });
+        //     this._callSubscriber(this._state)
+        // }
     }
 
 }
 
-export const addPostActionCreator = ()=> ({ type: ADD_POST })
+// export const addPostActionCreator = ()=> ({ type: ADD_POST })
 
-export const updateNewPostActionCreator = (text)=> ({
-    type:UPDATE_NEW_POST_TEXT,
-    newText: text,
-})
+// export const updateNewPostActionCreator = (text)=> ({
+//     type:UPDATE_NEW_POST_TEXT,
+//     newText: text,
+// })
 
-export const sendMessageCreator = ()=> ({ type: SEND_MESSAGE })
-export const updateNewMessageBodyCreator = (body)=> ({
-    type:UPDATE_NEW_MESSAGE_BODY,
-    body: body,
-})
+// export const sendMessageCreator = ()=> ({ type: SEND_MESSAGE })
+// export const updateNewMessageBodyCreator = (body)=> ({
+//     type:UPDATE_NEW_MESSAGE_BODY,
+//     body: body,
+// })
 
 
 export default store;
