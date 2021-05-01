@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import {rerenderEntireTree} from './render'; решили делать так. потом передумали
-import store from './components/redux/state';
+import store from './components/redux/redux-store';
 // import { addPost, updateNewPostText } from './components/redux/state';
 
 
@@ -20,7 +20,12 @@ let rerenderEntireTree = (state) => {
 rerenderEntireTree(store.getState())
 
 
-store.subscribe(rerenderEntireTree);//паттерн слушатель
+//store.subscribe(rerenderEntireTree);//паттерн слушатель
+
+store.subscribe(()=>{
+    let state = store.getState();
+    rerenderEntireTree(state);
+})
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
