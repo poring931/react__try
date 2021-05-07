@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import {rerenderEntireTree} from './render'; решили делать так. потом передумали
 import store from './components/redux/redux-store';
+import StoreContext,{Provider} from './StoreContext';
 // import { addPost, updateNewPostText } from './components/redux/state';
 
 
@@ -14,7 +15,14 @@ import store from './components/redux/redux-store';
 
 let rerenderEntireTree = (state) => {
     ReactDOM.render(
-        <App state={store.getState()}  dispatch={store.dispatch.bind(store)} store={store}/>, document.getElementById('root')
+        // <StoreContext.Provider value={store}>
+        //     {/* <App state={store.getState()}  dispatch={store.dispatch.bind(store)} store={store}/> */}
+            
+        // </StoreContext.Provider>
+        <Provider store={store}>
+                <App/>
+        </Provider>
+        , document.getElementById('root')
     );
 }
 rerenderEntireTree(store.getState())

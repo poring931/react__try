@@ -20,9 +20,11 @@ const App = (props) => {
           {/* <Route path="/dialogs" component={Dialogs}/>
           <Route path="/profile" component={Profile}/> */}
 
-          <Route path="/dialogs" render={() => <DialogsContainer store={props.store} />}/>
+          {/* <Route path="/dialogs" render={() => <DialogsContainer store={props.store} />}/> */}
+          <Route path="/dialogs" render={() => <DialogsContainer  />}/>
           {/* <Route path="/profile" render={() => <Profile  profilePage={props.state.profilePage} dispatch={props.dispatch} />}/> */}
-          <Route path="/profile" render={() => <Profile  store={props.store} />}/>
+          <Route path="/profile" render={() => <Profile  />}/>
+          {/* <Route path="/profile" render={() => <Profile  store={props.store} />}/> */}
           {/* <Dialogs />  */}
         </div>
         {/*<Profile />*/}
