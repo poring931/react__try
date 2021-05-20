@@ -5,7 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import {rerenderEntireTree} from './render'; решили делать так. потом передумали
 import store from './components/redux/redux-store';
-import StoreContext,{Provider} from './StoreContext';
+// import StoreContext,{Provider} from './StoreContext';
+import {Provider} from 'react-redux';
 // import { addPost, updateNewPostText } from './components/redux/state';
 
 
@@ -13,7 +14,8 @@ import StoreContext,{Provider} from './StoreContext';
 
 
 
-let rerenderEntireTree = (state) => {
+// let rerenderEntireTree = (state) => {
+// let rerenderEntireTree = () => {
     ReactDOM.render(
         // <StoreContext.Provider value={store}>
         //     {/* <App state={store.getState()}  dispatch={store.dispatch.bind(store)} store={store}/> */}
@@ -24,16 +26,16 @@ let rerenderEntireTree = (state) => {
         </Provider>
         , document.getElementById('root')
     );
-}
-rerenderEntireTree(store.getState())
+// }
+// rerenderEntireTree(store.getState())
 
 
 //store.subscribe(rerenderEntireTree);//паттерн слушатель
 
-store.subscribe(()=>{
-    let state = store.getState();
-    rerenderEntireTree(state);
-})
+// store.subscribe(()=>{
+//     let state = store.getState();
+//     rerenderEntireTree(state);
+// })
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
